@@ -1,5 +1,5 @@
 
-# The Chaos Collective Library for the the Browser
+# The Chaos Collective: Client/Browser Library
 
 Rapid Prototyping library for javascript in the browser.
 
