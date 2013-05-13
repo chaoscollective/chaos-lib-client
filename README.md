@@ -1,5 +1,7 @@
 
 # The Chaos Collective: Client/Browser Library
+ 
+![ChaosLibClient](chaoscollective.github.com/chaos-lib-client/img/banner_720x135.jpg)
 
 Rapid Prototyping library for javascript in the browser.
 
