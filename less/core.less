@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+body {
+  font-size: 62.5%; // This makes 'em' font sizes nice: 1em = 10px;
+  font-family: Arial, sans-serif;
+}
+
+// these are on/off classes triggered by events from javascript
+.showif_ready    {display: none;}
+.showif_notready {display: block;}
+
+// SCROLLBAR
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+height: 1px;
+display: block;
+background-color: transparent;
+}
+::-webkit-scrollbar-track-piece  {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  height: 40px;
+  width: 40px;
+  //border-radius: 2px; 
+  background: fade( #000000, 50);
+  &:hover {
+    background: fade( #000000, 100);  
+  }
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+// transition
+.transition(@props:all, @duration:0.2s, @ease:ease-out) {
+  -webkit-transition: @props @duration @ease;
+  -moz-transition: @props @duration @ease;
+  transition: @props @duration @ease;
+}
+.transition(@props:all, @duration:0.2s, @delay:0.2s, @ease:ease-out) {
+  -webkit-transition: @props @duration @delay @ease;
+  -moz-transition: @props @duration @delay @ease;
+  -ms-transition: @props @duration @delay @ease;
+  -o-transition: @props @duration @delay @ease;
+  transition: @props @duration @delay @ease;
+}
+.transition(@duration:0.2s, @ease:ease-out) {
+  .transition(all, @duration, @ease);
+}
+
+// transform
+.transform(@string){
+  -webkit-transform: @string;
+  -moz-transform:    @string;
+  -ms-transform:      @string;
+  -o-transform:      @string;
+}
+.rotate(@r){
+  .transform( rotate(@r) );
+}
+
+// select
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.selectable:focus {
+  -webkit-user-select: all;
+  -khtml-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+}
+
+// filter
+.filter(@filt){
+  -webkit-filter: @filt; 
+  -moz-filter: @filt;
+  -o-filter: @filt; 
+  -ms-filter: @filt;
+  filter: @filt;
+}
+.blur(@val: 3px) {
+  .filter(blur(@val));
+}
+.grayscale(@val: 100%) {
+  .filter(grayscale(@val));
+}
+.sepia(@val: 100%) {
+  .filter(sepia(@val));
+}
+.saturate(@val: 10) {
+  .filter(saturate(@val));
+}
+.hue-rotate(@val: 90deg) {
+  .filter(hue-rotate(@val));
+}
+.invert(@val: 100%) {
+  .filter(invert(@val));
+}
+.opacity(@val: 50%) {
+  .filter(opacity(@val));
+}
+

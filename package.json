@@ -1,0 +1,10 @@
+{
+  "name": "chaos-lib-client",
+  "description": "The Chaos Collective: Rapid Prototyping library for javascript in the browser.",
+  "author": "The Chaos Collective <hello@chaoscollective.org>",
+  "dependencies": {
+    
+  },
+  "engine": "node >= 0.10.0"
+}
+  

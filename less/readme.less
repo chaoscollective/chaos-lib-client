@@ -1,0 +1,68 @@
+#readme_about {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+}
+#readme_viewer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: fade(#FFF, 70);
+  font-size: 1.6em;
+  .framebox {
+    position: absolute;
+    left: 50%;
+    width: 720px;
+    padding: 15px;
+    margin-left: -375px;
+    top: 50px;
+    bottom: 50px;
+    background: #FFF;
+    box-shadow: 0 0 5px #000;
+    border-radius: 5px;
+    overflow-y: auto;
+    img.banner {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    em {
+      opacity: 0.7;
+    }
+    blockquote {
+      background: #EEE;
+      padding: 0.5em;
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .framebox_closer {
+    position: absolute;
+    left: 50%;
+    width: 40px;
+    margin-left: 335px;
+    line-height: 36px;
+    text-align: center;
+    color: #888;
+    font-size: 32px;
+    top: 10px;
+    z-index: 10;
+    cursor: pointer;
+    height: 40px;
+    &:hover {
+      background: #000;
+      color: #FFF;
+    }
+  }
+}
