@@ -51,13 +51,13 @@ Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, a
  
 ## ui
 
-**alert**(message, callback)
+**ui.alert**(message, callback)
 
     ui.alert("Here's a nice little message.", function(){
       console.log("alert closed.");
     });
 
-**confirm**(question, callback)
+**ui.confirm**(question, callback)
 
     ui.confirm("Do you really want to do this?", function(confirmed){
       if(confirmed){
@@ -67,7 +67,7 @@ Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, a
       }
     });
 
-**prompt**(question, currentVal, placeholderVal, callback)
+**ui.prompt**(question, currentVal, placeholderVal, callback)
 
     ui.prompt("What is your name?", "", "Ms. Bojangles", function(answer){
       if(answer){
@@ -77,7 +77,7 @@ Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, a
       }
     });
 
-**prompList**(question, arrayOfValsAndDescriptions, selectedVal, callback)
+**ui.prompList**(question, arrayOfValsAndDescriptions, selectedVal, callback)
 
     ui.promptList("What is your favorite food?", [
         ["apples",   "Apples"],
@@ -96,6 +96,8 @@ Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, a
     });
 
 ***
+
+### styling ###
 
 While the UI module will provide some simple defaults, changing the style of the dialog is super easy. 
 
