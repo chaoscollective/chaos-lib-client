@@ -23,7 +23,7 @@ Once the core is loaded, we load the final exlicity javascript call to RequireJS
 
 ## 3rd Party
 
-We've added a handful of 3rd party open source javascript libraries for convience. These include:
+We've added a handful of 3rd party open source javascript libraries for convenience. These include:
 
 * markdown
 
