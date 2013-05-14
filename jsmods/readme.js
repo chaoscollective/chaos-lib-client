@@ -3,6 +3,7 @@ function(markdown,  lessadder,  community){
   var exports = {};
   var readme  = exports; 
   // --
+  if(!settings.readme) console.warn("MISSING: settings.readme");
   if(!settings.readme.project_base_url) console.warn("MISSING: settings.readme.project_base_url");
   var projBaseURL = settings.readme.project_base_url||"http://example.com/?Project=";
   // --

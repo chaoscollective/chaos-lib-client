@@ -4,6 +4,7 @@ function(){
   var exports   = {};
   var community = exports; 
   // --
+  if(!settings.community) console.warn("MISSING: settings.community");
   if(!settings.community.disqus_shortname) console.warn("MISSING: settings.community.disqus_shortname");
   window.disqus_shortname = settings.community.disqus_shortname||"unknown_shortname";
   // --
