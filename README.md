@@ -7,7 +7,9 @@ Rapid Prototyping library for javascript in the browser.
 
 Our focus is on building a simple base library that enables ideas to be quickly realized and experienced. 
 
-# CORE
+***
+
+**Core Components**
 
 As a foundation for quickly building prototypes, all apps should first include a small set of core javascript files:
 
@@ -19,15 +21,15 @@ Once the core is loaded, we load the final exlicity javascript call to RequireJS
 
 * RequireJS: Simple and powerful way to manage lots of little packages and resolve dependecies on the fly.
 
-# MODULES
+***
 
-## 3rd Party
+**3rd Party**
 
-We've added a handful of 3rd party open source javascript libraries for convenience. These include:
+Also note that we've added a handful of 3rd party open source javascript libraries for convenience. These include:
 
 * markdown
 
-## community
+# community
 
 Simple integration with the community. Discussions via Disqus, and simple links for sharing on Twitter, Facebook, and Google+.
 
@@ -37,7 +39,7 @@ Simple integration with the community. Discussions via Disqus, and simple links 
       disqus_shortname: 'YOUR_SITE_SHORTNAME'
     };
 
-## readme
+# readme
 
 **settings**
 
@@ -45,11 +47,11 @@ Simple integration with the community. Discussions via Disqus, and simple links 
       project_base_url: "http://example.com/?Project=" // projectID gets appended to this
     } 
 
-## lessadder
+# lessadder
 
 Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, as well as directly passing in LESS code to be parsed and added to the DOM.
  
-## ui
+# ui
 
 **ui.alert**(message, callback)
 
@@ -97,7 +99,7 @@ Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, a
 
 ***
 
-### styling ###
+**styling**
 
 While the UI module will provide some simple defaults, changing the style of the dialog is super easy. 
 
