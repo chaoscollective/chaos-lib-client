@@ -54,8 +54,8 @@ function(markdown,  lessadder,  community){
   };
   exports.getMarkdownForURL     = function(url, cb){
     $.get(url, function(markdownData){
-      return cb(markdown.toHTML(markdownData||"", "Maruku"));
-    });
+      return cb(markdown.toHTML(markdownData||""));
+    }); 
   }; 
   exports.getDisqusBoxForProjID = function(projID, name, cb){
     var projURL   = projBaseURL+projID;
