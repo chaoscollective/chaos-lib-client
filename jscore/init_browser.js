@@ -172,7 +172,7 @@ window.appReady       = function(){
 // --
 window.settings       = window.settings||{};
 // --
-// super basic jquery addons; if this gets large, we can break it out separately.
+// basic jquery addons; if this gets large, we can break it out separately.
 $.fn.dontScrollParent = function(exceptions){
   this.bind('mousewheel DOMMouseScroll',function(e){
     var me = this;
