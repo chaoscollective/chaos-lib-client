@@ -48,13 +48,13 @@ function(lessadder){
   };
   exports.confirm = function(question, cb){ 
     var msgHTML = escapeHTML(question); 
-    var html    = msgHTML + "<br/><br/><div class='btn bool' data-val=1>Yes</div><div data-val=0 class='btn bool close'>No</div>";
+    var html    = msgHTML + "<br/><br/><div class='btn bool' data-val=1>Yes</div><div data-val=0 class='btn bool close'>Cancel</div>";
     showDialog("confirm", html, false, cb);
   };
   exports.prompt = function(question, val, placeholder, cb){
     var msgHTML = escapeHTML(question); 
     var inputHTML = "<input type='text' />";
-    var html    = msgHTML + "<br/>"+inputHTML+"<br/><br/><div class='btn'>Okay</div>";
+    var html    = msgHTML + "<br/>"+inputHTML+"<br/><br/><div class='btn'>Okay</div><div class='btn close'>Cancel</div>";
     showDialog("prompt", html, false, cb, function($body){
       var $input = $body.find("input"); 
       $input.attr("placeholder", placeholder||"");
