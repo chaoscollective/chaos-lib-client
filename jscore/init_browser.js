@@ -165,6 +165,10 @@ window.logErrCB       = function(err,cb){
   if(!cb) return console.warn("no callback in logErrCB. You should change that.");
   cb(err);
 };
+window.appReady       = function(){
+  $(".showif_notready").hide();
+  $(".showif_ready").show();
+};
 // --
 window.settings       = window.settings||{};
 // --
@@ -193,7 +197,4 @@ $.fn.dontScrollParent = function(exceptions){
   });
 };
 // --
-$(document).ready(function(){
-  $(".showif_notready").hide();
-  $(".showif_ready").show(); 
-});
+

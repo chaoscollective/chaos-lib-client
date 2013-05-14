@@ -16,15 +16,10 @@
   margin-left: -200px;
   background: #222;
   font-size: 1.6em;
-  &.alert {
-    color: #CCC;
-  }
-  &.confirm {
-    color: #FF6;
-  }
-  &.prompt {
-    color: #CCC;
-  }
+  color: #CCC;
+  &.alert {}
+  &.confirm {}
+  &.prompt {} 
   .scroller {
     max-height: 200px;
     overflow-y: auto;
@@ -46,10 +41,11 @@
       color: #222;
     }
     &.sel {
+      color: #FFF;
       background: #000;
       cursor: default;
       &:hover {
-        color: #0CF;
+        color: #FFF;
       }
     }
     &.close {
