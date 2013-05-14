@@ -48,11 +48,6 @@ Simple integration with the community. Discussions via Disqus, and simple links 
 ## lessadder
 
 Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, as well as directly passing in LESS code to be parsed and added to the DOM.
-
-
-
-<div id='test1234'>test div</div>
-
-# test1111 {#test1111}
+ 
 
  
