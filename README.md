@@ -33,7 +33,7 @@ We've added a handful of 3rd party open source javascript libraries for convienc
 
 Simple integration with the community. Discussions via Disqus, and simple links for sharing on Twitter, Facebook, and Google+.
 
-### settings
+**settings**
 
     settings.community = {
       disqus_shortname: 'YOUR_SITE_SHORTNAME'
@@ -41,7 +41,7 @@ Simple integration with the community. Discussions via Disqus, and simple links 
 
 ## readme
 
-### settings
+**settings**
 
     settings.readme    = {
       project_base_url: "http://example.com/?Project=" // projectID gets appended to this
