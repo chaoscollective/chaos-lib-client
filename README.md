@@ -51,6 +51,8 @@ Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, a
 
 
 
+<div id='test1234'>test div</div>
 
+# test1111 {#test1111}
 
-
+ 

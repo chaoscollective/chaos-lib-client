@@ -1,12 +1,23 @@
-* {
+*     {
   margin: 0;
   padding: 0;
   border: none;
   outline: none;
 }
-body {
+body  {
   font-size: 62.5%; // This makes 'em' font sizes nice: 1em = 10px;
   font-family: Arial, sans-serif;
+}
+a     {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+hr    {
+  border-bottom: 1px solid #888;
 }
 
 // these are on/off classes triggered by events from javascript
@@ -113,5 +124,11 @@ background-color: transparent;
 }
 .opacity(@val: 50%) {
   .filter(opacity(@val));
+}
+
+// handy positioning classes
+.centerflow {
+  margin-left: auto;
+  margin-right: auto;
 }
 

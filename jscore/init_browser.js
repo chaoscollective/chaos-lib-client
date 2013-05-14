@@ -168,6 +168,31 @@ window.logErrCB       = function(err,cb){
 // --
 window.settings       = window.settings||{};
 // --
+// super basic jquery addons; if this gets large, we can break it out separately.
+$.fn.dontScrollParent = function(exceptions){
+  this.bind('mousewheel DOMMouseScroll',function(e){
+    var me = this;
+    if(exceptions){
+      if($(e.target).parents(exceptions).length > 0){
+        console.log("a parent was an exception.");
+        me = $(e.target).parents(exceptions).get(0);
+        //return true;
+      }
+      if($(e.target).parent().children(exceptions).length > 0){
+        console.log("self or sibling was exception.");
+        me = $(e.target).parent().children(exceptions).get(0);
+        //return true;
+      }
+    }
+    var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+    if (delta > 0 && $(me).scrollTop() <= 0)
+      return false;
+    if (delta < 0 && $(me).scrollTop() >= me.scrollHeight - $(me).innerHeight())
+      return false;
+    return true;
+  });
+};
+// --
 $(document).ready(function(){
   $(".showif_notready").hide();
   $(".showif_ready").show(); 
