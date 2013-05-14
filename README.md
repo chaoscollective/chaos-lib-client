@@ -27,7 +27,6 @@ We've added a handful of 3rd party open source javascript libraries for convienc
 
 * markdown
 
-
 ## community
 
 Simple integration with the community. Discussions via Disqus, and simple links for sharing on Twitter, Facebook, and Google+.
