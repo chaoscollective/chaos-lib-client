@@ -49,5 +49,76 @@ Simple integration with the community. Discussions via Disqus, and simple links 
 
 Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, as well as directly passing in LESS code to be parsed and added to the DOM.
  
+## ui
 
- 
+**alert**(message, callback)
+
+    ui.alert("Here's a nice little message.", function(){
+      console.log("alert closed.");
+    });
+
+**confirm**(question, callback)
+
+    ui.confirm("Do you really want to do this?", function(confirmed){
+      if(confirmed){
+        console.log("yep, do it.");
+      }else{
+        console.log("nope. don't do it.");
+      }
+    });
+
+**prompt**(question, currentVal, placeholderVal, callback)
+
+    ui.prompt("What is your name?", "", "Ms. Bojangles", function(answer){
+      if(answer){
+        console.log("Hello, "+answer);
+      }else{
+        console.log("No answer because dialog was "+((answer===null)?"closed":"blank"));
+      }
+    });
+
+**prompList**(question, arrayOfValsAndDescriptions, selectedVal, callback)
+
+    ui.promptList("What is your favorite food?", [
+        ["apples",   "Apples"],
+        ["bananas",  "Bananas"],
+        ["icecream", "Ice Cream"],
+        ["lasagna",  "Lasagna"],
+        ["munster",  "Munster Cheese"],
+        ["pastries", "Pastries"],
+        ["wine",     "Wine"]
+      ], "pastries", function(answer){
+      if(answer){
+        console.log("Your new favorite is: "+answer);
+      }else{
+        console.log("No answer, dialog was closed");
+      }
+    });
+
+***
+
+While the UI module will provide some simple defaults, changing the style of the dialog is super easy. 
+
+Since CSS uses the most specific rule when applying style, you just need to give it a rule that is slightly more specific than what's in the default theme. So here all we need to do is start the rule with `div` and we'll be good to go.
+
+For example, here's how you could **style the background color of the dialog**:
+
+    div.ui_d_body {
+      background: orange; 
+    }
+
+or **style the buttons to have rounded corners**:
+
+    div.ui_d_body .btn {
+      border-radius: 10px; 
+    }
+
+or **change the text color of the confirm dialog**:
+
+    div.ui_d_body.confirm {
+      color: #FF6;
+    }
+
+
+
+
