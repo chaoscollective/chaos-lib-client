@@ -21,6 +21,14 @@ Once the core is loaded, we load the final exlicity javascript call to RequireJS
 
 # MODULES
 
+## 3rd Party
+
+We've added a handful of 3rd party open source javascript libraries for convience. These include:
+
+* markdown
+
+
+
 ## community
 
 Simple integration with the community. Discussions via Disqus, and simple links for sharing on Twitter, Facebook, and Google+.
