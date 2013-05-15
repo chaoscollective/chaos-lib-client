@@ -5,6 +5,7 @@
   "dependencies": {
     
   },
-  "engine": "node >= 0.10.0"
+  "engine": "node >= 0.10.0",
+  "repository": "git://github.com/chaoscollective/chaos-lib-client" 
 }
   

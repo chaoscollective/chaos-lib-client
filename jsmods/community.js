@@ -27,6 +27,10 @@ function(){
     }
     console.warn("Unknown sharing service: "+service);
     return "";
+  }; 
+  exports.getShareBtn = function(service, msg, url){
+    var shareURL = community.getShareURL(service, msg, url);
+    return "<a href='"+shareURL+"' target='_blank'><div class='sharebtn "+service+"'></div></a>";
   };
   // --
   var disqus_countScriptAdded = false;
