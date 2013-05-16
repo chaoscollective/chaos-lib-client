@@ -14,24 +14,26 @@ Our focus is on building a simple base library that enables ideas to be quickly 
 As a foundation for quickly building prototypes, all apps should first include a small set of core javascript files:
 
 * jQuery: DOM manipulation.
-* Less: CSS with lots tons of helpers.
+* Less: CSS with tons of helpers.
 * Init_browser: Polyfill to make life easier as browsers add new features and change over time (+ a few key functions we wish existed in the browser).
 
-Once the core is loaded, we load the final exlicity javascript call to RequireJS; this sets the app in motion and recursively resolve dependencies in subsequence modules to run everything.
+Once the core is loaded, we load the final javascript call to RequireJS; this sets the app in motion and recursively resolves dependencies in subsequence modules to run everything.
 
 * RequireJS: Simple and powerful way to manage lots of little packages and resolve dependecies on the fly.
+
+Note that RequireJS also has a nice tool to optimize (read: combine and minify) modules when development moves beyond the initial exploration. This is super cool because it enable code to be built into lots of specific modular libraries and then sewn together as one.
 
 ***
 
 **3rd Party**
 
-Also note that we've added a handful of 3rd party open source javascript libraries for convenience. These include:
+We've added a handful of 3rd party open source javascript libraries for convenience. These include:
 
 * markdown
 
 # community
 
-Simple integration with the community. Discussions via Disqus, and simple links for sharing on Twitter, Facebook, and Google+.
+The `community` module allows for, you guessed it, simple integration with the community. Discussions via Disqus, and simple links for sharing on Twitter, Facebook, and Google+.
 
 **settings**
 
@@ -41,6 +43,8 @@ Simple integration with the community. Discussions via Disqus, and simple links 
 
 # readme
 
+The `readme` module makes including a project's info (in markdown format) a snap.
+
 **settings**
 
     settings.readme    = {
@@ -49,9 +53,13 @@ Simple integration with the community. Discussions via Disqus, and simple links 
 
 # lessadder
 
-Add LESS (sugared CSS) via javascript. This allows both inclusion by filename, as well as directly passing in LESS code to be parsed and added to the DOM.
+The `lessadder` module enables for adding LESS (sugared CSS) via javascript. 
+
+This allows both inclusion by filename, as well as directly passing in LESS code to be parsed and added to the DOM. Any module that has a DOM interface and can be styled is likely to make use of lessadder and dynamically include the modules corresponding stylesheet as needed.
  
 # ui
+
+The `ui` module is a set of handy user interface widgets for interacting with the user is common ways. For example, alerting a user of a problem, asking for text input, or giving them a yes or no questions; and all of it done asynchronously with callbacks.
 
 **ui.alert**(message, callback)
 
