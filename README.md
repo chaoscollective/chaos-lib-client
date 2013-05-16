@@ -15,7 +15,7 @@ As a foundation for quickly building prototypes, all apps should first include a
 
 * jQuery: DOM manipulation.
 * Less: CSS with tons of helpers.
-* Init_browser: Polyfill to make life easier as browsers add new features and change over time (+ a few key functions we wish existed in the browser).
+* Init_browser: Polyfill to make life easier as browsers add new features and change over time (+ a few key functions we wish existed in the browser, like *getting a UUID, checking for isMobile/isIframe, escaping HTML, and changing CSS rules*).
 
 Once the core is loaded, we load the final javascript call to RequireJS; this sets the app in motion and recursively resolves dependencies in subsequence modules to run everything.
 
