@@ -86,7 +86,12 @@
     background: #EFF;
     padding: 15px;
     margin: 15px 0px;
-    font-size: 1.1em;
+    font-size: 1.0em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover {
+      overflow: visible;
+    }
     code {}
   }
   code {

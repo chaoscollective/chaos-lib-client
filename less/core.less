@@ -7,6 +7,7 @@
 body  {
   font-size: 62.5%; // This makes 'em' font sizes nice: 1em = 10px;
   font-family: Arial, sans-serif;
+  overflow-x: hidden; 
 }
 a     {
   color: #000;
@@ -159,15 +160,24 @@ background-color: transparent;
     background: url("/_lib/img/share_twitter.svg") center center no-repeat;
     background-size: 100% 100%;
     background-color: #555;
+    &:hover {
+      background-color: #00aced;
+    }
   }
   &.facebook {
     background: url("/_lib/img/share_facebook.svg") center center no-repeat;
     background-size: 100% 100%;
     background-color: #555;
+    &:hover {
+      background-color: #3b5998;
+    }
   }
   &.googleplus {
     background: url("/_lib/img/share_googleplus.svg") center center no-repeat;
     background-size: 100% 100%;
     background-color: #555;
+    &:hover {
+      background-color: #dd4b39;
+    }
   }
 }
