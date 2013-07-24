@@ -19,9 +19,9 @@ function(){
     switch(service){
       case "twitter":
         //return 'http://twitter.com/intent/tweet?text='+toToTweet+'&hashtags=BandFu&related=ChaosOrg&url='+mediaURL;
-        return 'http://twitter.com/intent/tweet?text='+toToTweet+'&url='+mediaURL;
+        return 'https://twitter.com/intent/tweet?text='+toToTweet+'&url='+mediaURL;
       case "facebook":
-        return "http://www.facebook.com/sharer.php?t="+encodeURIComponent(toTweet)+"&u="+mediaURL;
+        return "https://www.facebook.com/sharer.php?t="+encodeURIComponent(toTweet)+"&u="+mediaURL;
       case "googleplus":
         return "https://plus.google.com/share?url="+mediaURL;
     }

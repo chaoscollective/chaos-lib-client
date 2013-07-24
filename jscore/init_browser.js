@@ -1,7 +1,7 @@
 
 // POLYFILL FOR BROWSER STILL IN FLUX.
 (function() {
-  var DEBUG     = false;
+  var DEBUG     = true;
   var lastTime  = 0;
   var vendors   = ['', 'ms', 'moz', 'webkit', 'o'];
   var winProps  = [
@@ -12,8 +12,6 @@
     "requestAnimationFrame",
     "cancelAnimationFrame",
     // --
-    "getUserMedia",
-    // --
     "OfflineAudioContext",
     "AudioContext",
     // --
@@ -22,7 +20,9 @@
     "RTCPeerConnection",
     "RTCSessionDescription",
     // --
-    "notifications"
+    "notifications",
+    // --
+    "URL"
   ];
   var navProps  = [
     "getUserMedia",
