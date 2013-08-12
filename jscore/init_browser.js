@@ -1,7 +1,7 @@
 
 // POLYFILL FOR BROWSER STILL IN FLUX.
 (function() {
-  var DEBUG     = true;
+  var DEBUG     = false;
   var lastTime  = 0;
   var vendors   = ['', 'ms', 'moz', 'webkit', 'o'];
   var winProps  = [
