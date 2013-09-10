@@ -1,3 +1,7 @@
+//
+// String parsers/helpers
+//
+
 define([],
 function(){
   var exports = {};
