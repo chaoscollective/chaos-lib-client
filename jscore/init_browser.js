@@ -30,8 +30,8 @@
     "persistentStorage"
   ];
   var docProps  = [
-    "visibilityState"
-  ];
+    "visibilityState",
+  ]; 
   // --
   if(!navigator) window.navigator = {};
   if(!console)   window.console   = {
@@ -39,39 +39,44 @@
     warn:   function(){},
     error:  function(){}
   };
+  var vendor = "";
   // --
   for(var x=0; x < vendors.length; x++) {
     for(var y=0; y < winProps.length; y++) {
       var prop  = winProps[y];
       var propB = prop.charAt(0).toUpperCase() + prop.substring(1);
-      if(!window[prop]){
+      if(window[prop] === undefined){
         window[prop] = window[vendors[x]+propB];
-        if(window[prop] && DEBUG){
-          console.log("POLYFILL(window):", prop+" --> "+vendors[x]+propB);
+        if(window[prop]){
+          vendor = vendors[x];
+          if(DEBUG) console.log("POLYFILL(window):", prop+" --> "+vendors[x]+propB);
         }
       }
     }
     for(var y=0; y < navProps.length; y++) {
       var prop  = navProps[y];
       var propB = prop.charAt(0).toUpperCase() + prop.substring(1);
-      if(!navigator[prop]){
+      if(navigator[prop] === undefined){
         navigator[prop] = navigator[vendors[x]+propB];
-        if(navigator[prop] && DEBUG){
-          console.log("POLYFILL(navigator):", prop+" --> "+vendors[x]+propB);
+        if(navigator[prop]){
+          vendor = vendors[x];
+          if(DEBUG) console.log("POLYFILL(navigator):", prop+" --> "+vendors[x]+propB);
         }
       }
     }
     for(var y=0; y < docProps.length; y++) {
       var prop  = docProps[y];
       var propB = prop.charAt(0).toUpperCase() + prop.substring(1);
-      if(!document[prop]){
+      if(document[prop] === undefined){
         document[prop] = document[vendors[x]+propB];
-        if(document[prop] && DEBUG){
-          console.log("POLYFILL(document):", prop+" --> "+vendors[x]+propB);
+        if(document[prop]){
+          vendor = vendors[x];
+          if(DEBUG) console.log("POLYFILL(document):", prop+" --> "+vendors[x]+propB);
         }
       }
     }
   }
+  window.vendorPrefix = vendor;
   // FALLBACKS...
   //* 
   if(!window.requestAnimationFrame)
@@ -84,7 +89,7 @@
     };
   if (!window.cancelAnimationFrame)
     window.cancelAnimationFrame = function(id) {clearTimeout(id);};
-  // --
+  // -- 
   document.getVisibilityState = function(){
     var prop  = "visibilityState";
     var propB = prop.charAt(0).toUpperCase() + prop.substring(1);
@@ -198,3 +203,129 @@ $.fn.dontScrollParent = function(exceptions){
 };
 // --
 
+// Screenfull (MIT License)
+// https://github.com/sindresorhus/screenfull.js
+(function (window, document) {
+  'use strict';
+	var keyboardAllowed = typeof Element !== 'undefined' && 'ALLOW_KEYBOARD_INPUT' in Element; // IE6 throws without typeof check
+	var fn = (function () {
+			var val, valLength;
+			var fnMap = [
+				[
+					'requestFullscreen',
+					'exitFullscreen',
+					'fullscreenElement',
+					'fullscreenEnabled',
+					'fullscreenchange',
+					'fullscreenerror'
+				],
+				// new WebKit
+				[
+					'webkitRequestFullscreen',
+					'webkitExitFullscreen',
+					'webkitFullscreenElement',
+					'webkitFullscreenEnabled',
+					'webkitfullscreenchange',
+					'webkitfullscreenerror'
+
+				],
+				// old WebKit (Safari 5.1)
+				[
+					'webkitRequestFullScreen',
+					'webkitCancelFullScreen',
+					'webkitCurrentFullScreenElement',
+					'webkitCancelFullScreen',
+					'webkitfullscreenchange',
+					'webkitfullscreenerror'
+
+				],
+				[
+					'mozRequestFullScreen',
+					'mozCancelFullScreen',
+					'mozFullScreenElement',
+					'mozFullScreenEnabled',
+					'mozfullscreenchange',
+					'mozfullscreenerror'
+				],
+				[
+					'msRequestFullscreen',
+					'msExitFullscreen',
+					'msFullscreenElement',
+					'msFullscreenEnabled',
+					'MSFullscreenchange',
+					'MSFullscreenerror'
+				]
+			];
+			var i = 0;
+			var l = fnMap.length;
+			var ret = {};
+			for (; i < l; i++) {
+				val = fnMap[i];
+				if (val && val[1] in document) {
+					for (i = 0, valLength = val.length; i < valLength; i++) {
+						ret[fnMap[0][i]] = val[i];
+					}
+					return ret;
+				}
+			}
+			return false;
+		})();
+	var screenfull = {
+			request: function (elem) {
+				var request = fn.requestFullscreen;
+				elem = elem || document.documentElement;
+				// Work around Safari 5.1 bug: reports support for
+				// keyboard in fullscreen even though it doesn't.
+				// Browser sniffing, since the alternative with
+				// setTimeout is even worse.
+				if (/5\.1[\.\d]* Safari/.test(navigator.userAgent)) {
+					elem[request]();
+				} else {
+					elem[request](keyboardAllowed && Element.ALLOW_KEYBOARD_INPUT);
+				}
+			},
+			exit: function () {
+				document[fn.exitFullscreen]();
+			},
+			toggle: function (elem) {
+				if (this.isFullscreen) {
+					this.exit();
+				} else {
+					this.request(elem);
+				}
+			},
+			onchange: function () {},
+			onerror: function () {},
+			raw: fn
+		};
+	if (!fn) {
+		window.screenfull = false;
+		return;
+	}
+	Object.defineProperties(screenfull, {
+		isFullscreen: {
+			get: function () {
+				return !!document[fn.fullscreenElement];
+			}
+		},
+		element: {
+			enumerable: true,
+			get: function () {
+				return document[fn.fullscreenElement];
+			}
+		},
+		enabled: {
+			enumerable: true,
+			get: function () { // Coerce to boolean in case of old WebKit
+				return !!document[fn.fullscreenEnabled];
+			}
+		}
+	});
+	document.addEventListener(fn.fullscreenchange, function (e) {
+		screenfull.onchange.call(screenfull, e);
+	});
+	document.addEventListener(fn.fullscreenerror, function (e) {
+		screenfull.onerror.call(screenfull, e);
+	});
+	window.screenfull = screenfull;
+})(window, document);
