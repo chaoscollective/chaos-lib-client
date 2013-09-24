@@ -1,4 +1,4 @@
-define("rtpipe",["sockjs"],function(sockjs){
+define(["./sockjs"],function(sockjs){
 window.rtpipe = (function(){
   var pipeUsed = false;
   return function(options){  
