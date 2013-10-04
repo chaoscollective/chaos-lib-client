@@ -1,6 +1,7 @@
 /* 
 Lame is used under the LGPL
 See http://www.mp3dev.org
+Additional thanks for porting to JS by akrennmair -> https://github.com/akrennmair/libmp3lame-js
 */
 console.log("Lame is used under the LGPL. See http://www.mp3dev.org -- thanks!");
 

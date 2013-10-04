@@ -1,0 +1,1 @@
+Additional thanks for porting to JS by akrennmair -> https://github.com/akrennmair/libmp3lame-js
