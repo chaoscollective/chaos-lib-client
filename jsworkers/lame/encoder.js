@@ -18,11 +18,11 @@ self.onmessage = function(e) {
     break;
   case 'encode':
     mp3data = Lame.encode_buffer_ieee_float(mp3codec, e.data.buf1, e.data.buf2||e.data.buf1);
-    self.postMessage({cmd: 'data', bufSize: mp3data.data.length});
-    break; 
+    self.postMessage({cmd: 'data', buf: mp3data.data});
+    break;
   case 'finish':
     mp3data = Lame.encode_flush(mp3codec);
-    self.postMessage({cmd: 'end', bufSize: mp3data.data.length, buf: mp3data.data});
+    self.postMessage({cmd: 'end', buf: mp3data.data});
     Lame.close(mp3codec);
     mp3codec = null;
     break;
