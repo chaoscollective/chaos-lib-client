@@ -17,7 +17,7 @@ self.onmessage = function(e) {
     break;
   case 'encode':
     var mp3data = Lame.encode_buffer_ieee_float(mp3codec, e.data.buf1, e.data.buf2||e.data.buf1);
-    self.postMessage({cmd: 'data', buf: mp3data.data});
+    self.postMessage({cmd: 'data', bufSize: mp3data.data.length});
     break;
   case 'finish':
     var mp3data = Lame.encode_flush(mp3codec);
