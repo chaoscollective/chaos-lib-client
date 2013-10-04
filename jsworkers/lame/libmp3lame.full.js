@@ -5357,6 +5357,11 @@ return {
 	set_bitrate: Module.cwrap('lame_set_brate', 'number', [ 'number', 'number' ]),
 	get_bitrate: Module.cwrap('lame_get_brate', 'number', [ 'number' ]),
 	set_VBR: Module.cwrap('lame_set_VBR', 'number', [ 'number', 'number' ]),
+	get_VBR: Module.cwrap('lame_get_VBR', 'number', [ 'number' ]),
+	set_VBR_q: Module.cwrap('lame_set_VBR_q', 'number', [ 'number', 'number' ]),
+	get_VBR_q: Module.cwrap('lame_get_VBR_q', 'number', [ 'number' ]),
+	set_VBR_mean_bitrate_kbps: Module.cwrap('lame_set_VBR_mean_bitrate_kbps', 'number', [ 'number', 'number' ]),
+	get_VBR_mean_bitrate_kbps: Module.cwrap('lame_get_VBR_mean_bitrate_kbps', 'number', [ 'number' ]),
 	encode_buffer_ieee_float: function(handle, channel_l, channel_r) {
 		var outbuf = _malloc(BUFSIZE);
 		var inbuf_l = _malloc(channel_l.length * 4);
