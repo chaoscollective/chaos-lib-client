@@ -65,7 +65,7 @@ self.onmessage = function(e) {
     wr(dv, 36, 'data');         // data chunk id
     dv.setUint32(40, len * chans, true); // chunk len
     // --
-    self.postMessage({cmd: 'data', buf: buffer});
+    self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
   case 'encode':
     chans   = 1;
@@ -82,7 +82,7 @@ self.onmessage = function(e) {
       chanData = [e.data.buf1||[], e.data.buf2||[]];
     }
     floatTo16BitPCM(dv, 0, chanData);
-    self.postMessage({cmd: 'data', buf: buffer});
+    self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
   case 'finish':
     self.postMessage({cmd: 'end', buf: []});
