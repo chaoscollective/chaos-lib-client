@@ -63,7 +63,7 @@ self.onmessage = function(e) {
     dv.setUint16(34, 16, true); // bits per sample (16 = 2 bytes)
     // -- chunk 2
     wrTxt(dv, 36, 'data');         // data chunk id
-    dv.setUint32(40, len * chans, true); // chunk len
+    dv.setUint32(40, 2*len * chans, true); // chunk len
     // --
     self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
@@ -81,9 +81,9 @@ self.onmessage = function(e) {
     }else{
       chanData = [e.data.buf1||[], e.data.buf2||[]];
     }
-    console.log("wav: chans="+chans+", len="+len);
+    //console.log("wav: chans="+chans+", len="+len);
     var idata = interleave(chanData);
-    console.log("wav: idata len="+idata.length);
+    //console.log("wav: idata len="+idata.length);
     floatTo16BitPCM(dv, 0, idata); 
     self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
