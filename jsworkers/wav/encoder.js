@@ -78,7 +78,7 @@ self.onmessage = function(e) {
     wr(dv, 0, 'RIFF');   // RIFF
     dv.setUint32(4, 32 + len * chans, true); // 32 + length
     wr(dv, 8, 'WAVE');   // RIFF type
-    // -- chunk 1 
+    // -- chunk 1
     wr(dv, 12, 'fmt ');  // chunk id
     dv.setUint32(16, 16, true);   // subchunk1size (16 for PCM)
     dv.setUint16(20, 1, true);    // 1=PCM
@@ -91,8 +91,8 @@ self.onmessage = function(e) {
     wr(dv, 36, 'data');         // data chunk id
     dv.setUint32(40, len * chans, true); // chunk len
     // --
-    console.log("wav: chunk1 -> ",dv);
-    self.postMessage({cmd: 'data', buf: dv});
+    console.log("wav: chunk1 -> ", buffer);
+    self.postMessage({cmd: 'data', buf: buffer});
     // --
     // mp3codec = Lame.init();
     // var chans = e.data.config.channels || 2; 
