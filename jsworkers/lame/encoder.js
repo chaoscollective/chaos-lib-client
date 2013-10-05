@@ -24,6 +24,7 @@ self.onmessage = function(e) {
       Lame.set_VBR_q(mp3codec, e.data.config.vbr_q || 4);
     }
     Lame.init_params(mp3codec);
+    self.postMessage({cmd: 'data', buf: []});
     break;
   case 'encode':
     mp3data = Lame.encode_buffer_ieee_float(mp3codec, e.data.buf1, e.data.buf2||e.data.buf1);
