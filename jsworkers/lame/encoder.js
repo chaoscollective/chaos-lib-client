@@ -10,7 +10,7 @@ self.onmessage = function(e) {
   case 'init':
     e.data.config = e.data.config||{};
     mp3codec = Lame.init();
-    var chans = e.data.config.channels || 2; 
+    var chans = e.data.config.channels || 1; 
     Lame.set_mode(mp3codec, e.data.config.mode || (chans===1)?Lame.MONO:Lame.JOINT_STEREO);
     Lame.set_num_channels(mp3codec, chans);
     Lame.set_in_samplerate(mp3codec, e.data.config.in_samplerate || 44100);
