@@ -72,7 +72,7 @@ self.onmessage = function(e) {
     if(e.data.buf2) chans = 2;
     len     = (e.data.buf1||[]).length;
     // --
-    buffer  = new ArrayBuffer(len*chans); // + samples.length * 2); // 44 + PCM points * 2
+    buffer  = new ArrayBuffer(2*len*chans); // + samples.length * 2); // 44 + PCM points * 2
     dv      = new DataView(buffer);
     // --
     var chanData;
