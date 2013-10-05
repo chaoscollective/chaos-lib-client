@@ -78,13 +78,13 @@ self.onmessage = function(e) {
     wr(dv, 0, 'RIFF');   // RIFF
     dv.setUint32(4, 32 + len * chans, true); // 32 + length
     wr(dv, 8, 'WAVE');   // RIFF type
-    // -- chunk 1
+    // -- chunk 1 
     wr(dv, 12, 'fmt ');  // chunk id
     dv.setUint32(16, 16, true);   // subchunk1size (16 for PCM)
     dv.setUint16(20, 1, true);    // 1=PCM
     dv.setUint16(22, chans, true); // num channels
-    dv.setUint32(24, sampleRate, true);          // samplerate
-    dv.setUint32(28, sampleRate * chans * 2, true); // byterate
+    dv.setUint32(24, samplerate, true);          // samplerate
+    dv.setUint32(28, samplerate * chans * 2, true); // byterate
     dv.setUint16(32, 2 * chans, true);  // block align
     dv.setUint16(34, 16, true); // bits per sample (16 = 2 bytes)
     // -- chunk 2
