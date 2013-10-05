@@ -70,7 +70,7 @@ self.onmessage = function(e) {
     var chans       = e.data.config.channels || 1;
     var len         = e.data.config.len || 0;
     if(!len) return console.warn("wav: no len specified.");
-    var samplerate  =  e.data.config.samplerate || 44100;
+    var samplerate  =  e.data.config.in_samplerate || 44100;
     // --
     var buffer  = new ArrayBuffer(44); // + samples.length * 2); // 44 + PCM points * 2
     var dv      = new DataView(buffer);
@@ -91,6 +91,7 @@ self.onmessage = function(e) {
     wr(dv, 36, 'data');         // data chunk id
     dv.setUint32(40, len * chans, true); // chunk len
     // --
+    console.log("wav: chunk1 -> ",dv);
     self.postMessage({cmd: 'data', buf: dv});
     // --
     // mp3codec = Lame.init();
