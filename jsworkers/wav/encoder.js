@@ -48,9 +48,9 @@ self.onmessage = function(e) {
     // --
     buffer  = new ArrayBuffer(44); // + samples.length * 2); // 44 + PCM points * 2
     dv      = new DataView(buffer);
-    // -- header
-    wrTxt(dv, 0, 'RIFF');   // RIFF
-    dv.setUint32(4, 32 + len * chans, true); // 32 + length
+    // -- header 
+    wrTxt(dv, 0, 'RIFF');   // RIFF 
+    dv.setUint32(4, 32 + 2*len*chans, true); // 32 + length : 4 + (8 + SubChunk1Size) + (8 + SubChunk2Size) -> 32+
     wrTxt(dv, 8, 'WAVE');   // RIFF type
     // -- chunk 1
     wrTxt(dv, 12, 'fmt ');  // chunk id
@@ -63,7 +63,7 @@ self.onmessage = function(e) {
     dv.setUint16(34, 16, true); // bits per sample (16 = 2 bytes)
     // -- chunk 2
     wrTxt(dv, 36, 'data');         // data chunk id
-    dv.setUint32(40, 2*len * chans, true); // chunk len
+    dv.setUint32(40, 2*len*chans, true); // chunk len
     // --
     self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
