@@ -81,7 +81,8 @@ self.onmessage = function(e) {
     }else{
       chanData = [e.data.buf1||[], e.data.buf2||[]];
     }
-    floatTo16BitPCM(dv, 0, chanData);
+    var idata = interleave(chanData);
+    floatTo16BitPCM(dv, 0, idata); 
     self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
   case 'finish':
