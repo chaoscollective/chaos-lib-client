@@ -30,7 +30,7 @@ function floatTo16BitPCM(output, offset, input){
     console.log(ex);
   }
 }
-function wr(view, offset, string){
+function wrTxt(view, offset, string){
   for (var i = 0; i < string.length; i++){
     view.setUint8(offset + i, string.charCodeAt(i));
   }
@@ -49,11 +49,11 @@ self.onmessage = function(e) {
     buffer  = new ArrayBuffer(44); // + samples.length * 2); // 44 + PCM points * 2
     dv      = new DataView(buffer);
     // -- header
-    wr(dv, 0, 'RIFF');   // RIFF
+    wrTxt(dv, 0, 'RIFF');   // RIFF
     dv.setUint32(4, 32 + len * chans, true); // 32 + length
-    wr(dv, 8, 'WAVE');   // RIFF type
+    wrTxt(dv, 8, 'WAVE');   // RIFF type
     // -- chunk 1
-    wr(dv, 12, 'fmt ');  // chunk id
+    wrTxt(dv, 12, 'fmt ');  // chunk id
     dv.setUint32(16, 16, true);   // subchunk1size (16 for PCM)
     dv.setUint16(20, 1, true);    // 1=PCM
     dv.setUint16(22, chans, true); // num channels
@@ -62,7 +62,7 @@ self.onmessage = function(e) {
     dv.setUint16(32, 2 * chans, true);  // block align
     dv.setUint16(34, 16, true); // bits per sample (16 = 2 bytes)
     // -- chunk 2
-    wr(dv, 36, 'data');         // data chunk id
+    wrTxt(dv, 36, 'data');         // data chunk id
     dv.setUint32(40, len * chans, true); // chunk len
     // --
     self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
