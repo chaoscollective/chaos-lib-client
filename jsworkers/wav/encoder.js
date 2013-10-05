@@ -81,7 +81,9 @@ self.onmessage = function(e) {
     }else{
       chanData = [e.data.buf1||[], e.data.buf2||[]];
     }
+    console.log("wav: chans="+chans+", len="+len);
     var idata = interleave(chanData);
+    console.log("wav: idata len="+idata.length);
     floatTo16BitPCM(dv, 0, idata); 
     self.postMessage({cmd: 'data', buf: new Uint8Array(buffer)});
     break;
